@@ -3,10 +3,21 @@
 <style>
 body {
     margin: 0;
-    padding: 0 20px;
-    display: flex;
+    padding: 0 2em;
 }
-.color {
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.color, .title {
     height: 10em;
     width: 10em;
     margin: 1em 1em;
@@ -17,6 +28,7 @@ body {
 #color1 { background-color: #121414; }
 #color2 { background-color: #1A1C1C; }
 #color3 { background-color: #4C566A; }
+#color3_alt { background-color: #8C8C8C; }
 #color4 { background-color: #F2F2F2; }
 #color5 { background-color: #FAFAFA; }
 #color6 { background-color: #FAF5EF; }
@@ -31,9 +43,9 @@ body {
 #color15 { background-color: #CD96B3; }
 </style>
     <head>
-        <title>Stilla</title>
+        <title>stilla</title>
         <meta charset="utf-8">
-        <meta property="og:title" content="Stilla" />
+        <meta property="og:title" content="stilla" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://stilla.isnt.online" />
         <meta property="og:image" content="https://avatars0.githubusercontent.com/u/29869612?s=400&u=32e0c272cbfcc32b8e9585f74ce57d197aa14fb0&v=4"/>
@@ -50,24 +62,40 @@ body {
     </head>
     <body>
         <main>
-            <h1>stilla</h1>
-            <p>a nice color theme</p>
-            <div><div class="color" id="color0"></div> #0D0D0D</div>
-            <div><div class="color" id="color1"></div> #121414</div>
-            <div><div class="color" id="color2"></div> #1A1C1C</div>
-            <div><div class="color" id="color3"></div> #4C566A</div>
-            <div><div class="color" id="color4"></div> #F2F2F2</div>
-            <div><div class="color" id="color5"></div> #FAFAFA</div>
-            <div><div class="color" id="color6"></div> #FAF5EF</div>
-            <div><div class="color" id="color7"></div> #8FBCBB</div>
-            <div><div class="color" id="color8"></div> #88B6D0</div>
-            <div><div class="color" id="color9"></div> #ADB2BA</div>
-            <div><div class="color" id="color10"></div> #5E81AC</div>
-            <div><div class="color" id="color11"></div> #BA8082</div>
-            <div><div class="color" id="color12"></div> #d99962</div>
-            <div><div class="color" id="color13"></div> #E9B872</div>
-            <div><div class="color" id="color14"></div> #A19C9A</div>
-            <div><div class="color" id="color15"></div> #CD96B3</div>
+            <div class="row">
+                <div class="title">
+                    <h1>stilla</h1>
+                    <p>a nice color theme</p>
+                    <p>by jakeisnt</p>
+                </div>
+                <div><div class="color" id="color0"></div> #0D0D0D</div>
+                <div><div class="color" id="color1"></div> #121414</div>
+            </div>
+            <div class="row">
+                <div><div class="color" id="color2"></div> #1A1C1C</div>
+                <div><div class="color" id="color3"></div> #4C566A</div>
+                <div><div class="color" id="color3_alt"></div> #8C8C8C</div>
+            </div>
+            <div class="row">
+                <div><div class="color" id="color4"></div> #F2F2F2</div>
+                <div><div class="color" id="color5"></div> #FAFAFA</div>
+                <div><div class="color" id="color6"></div> #FAF5EF</div>
+            </div>
+            <div class="row">
+                <div><div class="color" id="color7"></div> #8FBCBB</div>
+                <div><div class="color" id="color8"></div> #88B6D0</div>
+                <div><div class="color" id="color9"></div> #ADB2BA</div>
+            </div>
+            <div class="row">
+                <div><div class="color" id="color10"></div> #5E81AC</div>
+                <div><div class="color" id="color11"></div> #BA8082</div>
+                <div><div class="color" id="color12"></div> #d99962</div>
+            </div>
+            <div class="row">
+                <div><div class="color" id="color13"></div> #E9B872</div>
+                <div><div class="color" id="color14"></div> #A19C9A</div>
+                <div><div class="color" id="color15"></div> #CD96B3</div>
+            </div>
         </main>
     </body>
 </html>
