@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<style>
+  <style>
 body {
-    margin: 0;
-    padding: 0 2em;
+  margin: 0;
+  padding: 0 2em;
 }
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
 }
 
 .row {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.color, .title {
-    height: 10em;
-    width: 10em;
-    margin: 1em 1em;
-    margin-left: 0;
+.indent {
+  margin-left: 1em;
+}
+
+.color {
+  height: 10em;
+  width: 10em;
+  margin: 1em 0;
+}
+
+.title {
+  height: 10em;
+  width: 10em;
+  margin: 1em 1em;
 }
 
 #color0 { background-color: #0D0D0D; }
@@ -42,60 +52,62 @@ main {
 #color14 { background-color: #A19C9A; }
 #color15 { background-color: #CD96B3; }
 </style>
-    <head>
-        <title>stilla</title>
-        <meta charset="utf-8">
-        <meta property="og:title" content="stilla" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://stilla.isnt.online" />
-        <meta property="og:image" content="https://avatars0.githubusercontent.com/u/29869612?s=400&u=32e0c272cbfcc32b8e9585f74ce57d197aa14fb0&v=4"/>
-        <meta name="description" content="A quiet, introverted color palette. Designed to retain expression while staying out of your way."/>
-        <meta name="keywords" content="stilla, palette, color, colorscheme, design"/>
-        <meta name="author" content="jakeisnt"/>
-        <meta name="robots" content="follow"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="theme-color" content="#fff"/>
-        <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-            <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-            <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-            <link rel="manifest" href="/site.webmanifest">
-    </head>
-    <body>
-        <main>
-            <div class="row">
-                <div class="title">
-                    <h1>stilla</h1>
-                    <p>a nice color theme</p>
-                    <p>by jakeisnt</p>
-                </div>
-                <div><div class="color" id="color0"></div> #0D0D0D</div>
-                <div><div class="color" id="color1"></div> #121414</div>
-            </div>
-            <div class="row">
-                <div><div class="color" id="color2"></div> #1A1C1C</div>
-                <div><div class="color" id="color3"></div> #4C566A</div>
-                <div><div class="color" id="color3_alt"></div> #8C8C8C</div>
-            </div>
-            <div class="row">
-                <div><div class="color" id="color4"></div> #F2F2F2</div>
-                <div><div class="color" id="color5"></div> #FAFAFA</div>
-                <div><div class="color" id="color6"></div> #FAF5EF</div>
-            </div>
-            <div class="row">
-                <div><div class="color" id="color7"></div> #8FBCBB</div>
-                <div><div class="color" id="color8"></div> #88B6D0</div>
-                <div><div class="color" id="color9"></div> #ADB2BA</div>
-            </div>
-            <div class="row">
-                <div><div class="color" id="color10"></div> #5E81AC</div>
-                <div><div class="color" id="color11"></div> #BA8082</div>
-                <div><div class="color" id="color12"></div> #d99962</div>
-            </div>
-            <div class="row">
-                <div><div class="color" id="color13"></div> #E9B872</div>
-                <div><div class="color" id="color14"></div> #A19C9A</div>
-                <div><div class="color" id="color15"></div> #CD96B3</div>
-            </div>
-        </main>
-    </body>
+  <head>
+    <title>stilla</title>
+    <meta charset="utf-8">
+    <meta property="og:title" content="stilla" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://stilla.isnt.online" />
+    <meta property="og:image" content="https://avatars0.githubusercontent.com/u/29869612?s=400&u=32e0c272cbfcc32b8e9585f74ce57d197aa14fb0&v=4"/>
+    <meta name="description" content="A quiet, introverted color palette. Designed to retain expression while staying out of your way."/>
+    <meta name="keywords" content="stilla, palette, color, colorscheme, design"/>
+    <meta name="author" content="jakeisnt"/>
+    <meta name="robots" content="follow"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  </head>
+  <body>
+    <main>
+      <div class="row">
+        <div class="title">
+          <div>
+            <h1>stilla</h1>
+            <p>a subtle color theme</p>
+          </div>
+          by jakeisnt
+        </div>
+        <div class="indent"><div class="color" id="color0"></div> #0D0D0D</div>
+        <div class="indent"><div class="color" id="color1"></div> #121414</div>
+      </div>
+      <div class="row">
+        <div class="indent"><div class="color" id="color2"></div> #1A1C1C</div>
+        <div class="indent"><div class="color" id="color3"></div> #4C566A</div>
+        <div class="indent"><div class="color" id="color3_alt"></div> #8C8C8C</div>
+      </div>
+      <div class="row">
+        <div class="indent"><div class="color" id="color4"></div> #F2F2F2</div>
+        <div class="indent"><div class="color" id="color5"></div> #FAFAFA</div>
+        <div class="indent"><div class="color" id="color6"></div> #FAF5EF</div>
+      </div>
+      <div class="row">
+        <div class="indent"><div class="color" id="color7"></div> #8FBCBB</div>
+        <div class="indent"><div class="color" id="color8"></div> #88B6D0</div>
+        <div class="indent"><div class="color" id="color9"></div> #ADB2BA</div>
+      </div>
+      <div class="row">
+        <div class="indent"><div class="color" id="color10"></div> #5E81AC</div>
+        <div class="indent"><div class="color" id="color11"></div> #BA8082</div>
+        <div class="indent"><div class="color" id="color12"></div> #d99962</div>
+      </div>
+      <div class="row">
+        <div class="indent"><div class="color" id="color13"></div> #E9B872</div>
+        <div class="indent"><div class="color" id="color14"></div> #A19C9A</div>
+        <div class="indent"><div class="color" id="color15"></div> #CD96B3</div>
+      </div>
+    </main>
+  </body>
 </html>
