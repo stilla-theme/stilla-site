@@ -1,0 +1,17 @@
+#+title: stilla notes
+
+* vscode
+    - yellow file title feels too strong
+    - strings should include their enclosing quotes in their highlighting
+    - do not need to highlight both top and bottom bars for the selected tab - just highlight one. would like the bottom bar to have a bit thicker of a color when highlighted, but not sure if this is possible
+      - for jsx: 'from' and the import path aren't distinct enough colors to tell the difference. string vs keyword?
+    - highlight for warning should be a more subtle color
+    - react component names should have a different color from their props - is this possible?
+* browser
+  - silly screenshot needs to be removed - it's low effort and distracting
+* site
+  alignment is off wrt the text
+  should be able to use flexbox with a max width to ensure that alignment is preserved: i want 3 rows of oclors on desktop, two on mobile
+  add links to the various plugins
+
+
