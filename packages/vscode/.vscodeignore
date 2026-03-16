@@ -1,0 +1,13 @@
+.vscode/**
+.vscode-test/**
+.gitignore
+.direnv/**
+.envrc
+src/**
+dist/**
+node_modules/**
+biome.json
+tsconfig.json
+flake.nix
+flake.lock
+*.vsix

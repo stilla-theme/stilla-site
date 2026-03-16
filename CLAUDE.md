@@ -4,30 +4,43 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-Monorepo for color theme showcase sites, managed with bun workspaces. Each theme lives in `packages/<theme-name>/` as its own Vite static site with Tailwind CSS 4.
+Monorepo for the **Stilla** color theme — all editor plugins, the showcase site, and the color source of truth. Managed with bun workspaces.
 
 ## Structure
 
 ```
 packages/
-  stilla/     — "a quiet, introverted theme that stays out of your way"
+  colors/     — source of truth color definitions (colors.txt)
+  emacs/      — doom-emacs theme (doom-stilla-theme.el)
+  nvim/       — neovim theme (lua plugin)
+  site/       — showcase website (Vite + Tailwind CSS 4)
+  vscode/     — VS Code extension (TypeScript)
 ```
 
 ## Commands
 
-Run from a package directory (e.g. `packages/stilla/`):
-
+Site (from `packages/site/`):
 ```sh
 bun run dev      # Start Vite dev server
 bun run build    # Build to dist/
 bun run preview  # Preview production build
 ```
 
-## Adding a New Theme
-
-1. Create `packages/<name>/` with `index.html`, `src/style.css`, `vite.config.ts`, and `package.json`
-2. Follow the same Vite + Tailwind CSS 4 setup as existing themes
+VS Code extension (from `packages/vscode/`):
+```sh
+bun run build    # Generate theme JSON from TypeScript
+bun run package  # Build + package .vsix
+bun run check    # Biome lint/format check
+```
 
 ## Deployment
 
-Cloudflare Pages, auto-deploys from `main`. Each package builds independently.
+Site: Cloudflare Pages, auto-deploys from `main`.
+
+## Color Palette
+
+16 colors organized into groups:
+- **Backgrounds**: `#0D0D0D`, `#121414`, `#1A1C1C`
+- **Neutrals**: `#4C566A`, `#8C8C8C`, `#ADB2BA`
+- **Lights**: `#F2F2F2`, `#FAFAFA`, `#FAF5EF`
+- **Accents**: `#8FBCBB`, `#88B6D0`, `#5E81AC`, `#BA8082`, `#D99962`, `#E9B872`, `#A19C9A`, `#CD96B3`

@@ -1,0 +1,61 @@
+{
+  "name": "stilla-vscode",
+  "displayName": "stilla",
+  "description": "`Still`: A quiet, introverted theme that stays out of your way.",
+  "version": "0.0.1",
+  "publisher": "jakeisnt",
+  "license": "MIT",
+  "author": {
+    "name": "jakeisnt",
+    "email": "jakechvatal+stillatheme@gmail.com",
+    "url": "jake.isnt.online"
+  },
+  "homepage": "https://github.com/stilla-theme/stilla-site",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stilla-theme/stilla-site",
+    "directory": "packages/vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/stilla-theme/stilla-site/issues"
+  },
+  "galleryBanner": {
+    "color": "#2E3440",
+    "theme": "dark"
+  },
+  "keywords": [
+    "stilla",
+    "north",
+    "minimal",
+    "bluish",
+    "clean"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "stilla",
+        "uiTheme": "vs-dark",
+        "path": "./themes/stilla-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "bun run src/build.ts",
+    "check": "biome check .",
+    "format": "biome check --write .",
+    "package": "bun run build && bunx @vscode/vsce package --no-dependencies",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.0.0",
+    "@vscode/vsce": "^3.2.0",
+    "bun-types": "^1.2.0",
+    "typescript": "^5.7.0"
+  }
+}
