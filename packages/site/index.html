@@ -117,6 +117,35 @@
           </button>
         </div>
       </section>
+      <section class="mt-16 pt-12 border-t border-white/5">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-[#8C8C8C] mb-8">Install</h2>
+        <div class="space-y-8">
+
+          <div>
+            <h3 class="text-base font-semibold text-[#88B6D0] mb-3">VS Code</h3>
+            <p class="text-sm text-[#ADB2BA] mb-2">Search <strong class="text-[#F2F2F2]">Stilla</strong> in the Extensions panel, or from the command line:</p>
+            <pre class="bg-[#0D0D0D] rounded-lg px-4 py-3 text-sm font-mono text-[#ADB2BA] overflow-x-auto"><code>code --install-extension jakeisnt.stilla</code></pre>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-[#88B6D0] mb-3">Neovim</h3>
+            <p class="text-sm text-[#ADB2BA] mb-2">Add to your <strong class="text-[#F2F2F2]">lazy.nvim</strong> config:</p>
+            <pre class="bg-[#0D0D0D] rounded-lg px-4 py-3 text-sm font-mono text-[#ADB2BA] overflow-x-auto"><code>{
+  "stilla-theme/stilla-site",
+  config = function()
+    vim.cmd.colorscheme("stilla")
+  end,
+}</code></pre>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-[#88B6D0] mb-3">Doom Emacs</h3>
+            <p class="text-sm text-[#ADB2BA] mb-2">Copy <strong class="text-[#F2F2F2]">doom-stilla-theme.el</strong> into your doom-themes directory, then set in your config:</p>
+            <pre class="bg-[#0D0D0D] rounded-lg px-4 py-3 text-sm font-mono text-[#ADB2BA] overflow-x-auto"><code>(setq doom-theme 'doom-stilla)</code></pre>
+          </div>
+
+        </div>
+      </section>
     </main>
 
     <script>
