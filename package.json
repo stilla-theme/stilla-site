@@ -1,15 +1,5 @@
 {
-  "name": "stilla-site",
-  "type": "module",
+  "name": "stilla-themes",
   "private": true,
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@tailwindcss/vite": "^4.2.1",
-    "tailwindcss": "^4.2.1",
-    "vite": "^8.0.0"
-  }
+  "workspaces": ["packages/*"]
 }
