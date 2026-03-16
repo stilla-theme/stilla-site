@@ -5,6 +5,10 @@
   "workspaces": ["packages/*"],
   "scripts": {
     "generate": "bun run --cwd packages/colors build",
-    "build": "bun run generate && bun run --cwd packages/vscode build"
+    "build": "bun run generate && bun run --cwd packages/vscode build",
+    "package": "bun run build && bun run --cwd packages/vscode package && bun run --cwd packages/nvim package && bun run --cwd packages/emacs package",
+    "package:vscode": "bun run generate && bun run --cwd packages/vscode package",
+    "package:nvim": "bun run generate && bun run --cwd packages/nvim package",
+    "package:emacs": "bun run generate && bun run --cwd packages/emacs package"
   }
 }

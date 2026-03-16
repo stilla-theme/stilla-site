@@ -1,0 +1,9 @@
+{
+  "name": "stilla-emacs",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Stilla color theme for Doom Emacs",
+  "scripts": {
+    "package": "bun run build-package.ts"
+  }
+}

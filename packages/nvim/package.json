@@ -1,0 +1,9 @@
+{
+  "name": "stilla-nvim",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Stilla color theme for Neovim",
+  "scripts": {
+    "package": "bun run build-package.ts"
+  }
+}
