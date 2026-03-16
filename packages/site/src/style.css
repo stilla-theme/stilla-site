@@ -41,7 +41,20 @@
 }
 
 /* Color picker styles */
+.picker-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+@media (min-width: 1024px) {
+  .picker-group {
+    grid-template-columns: 1fr;
+  }
+}
+
 .picker-group h3 {
+  grid-column: 1 / -1;
   font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
