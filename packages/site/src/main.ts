@@ -2,6 +2,7 @@ import * as monaco from "monaco-editor";
 import editorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
 import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker";
 import { palette as defaultPalette, type PaletteKey } from "stilla-colors";
+import { analyzePalette, type PaletteStats, type WcagLevel, type ApcaRating } from "./contrast";
 
 // Monaco worker setup for Vite
 self.MonacoEnvironment = {
@@ -143,10 +144,86 @@ function updateChromeColors(p: Palette) {
   root.style.setProperty("--chrome-cyan", p.cyan);
 }
 
+// ---------------------------------------------------------------------------
+// Contrast dashboard
+// ---------------------------------------------------------------------------
+
+const WCAG_COLORS: Record<WcagLevel, string> = {
+  AAA: "#28c840",
+  AA: "#88B6D0",
+  "AA-large": "#E9B872",
+  Fail: "#BA8082",
+};
+
+const APCA_COLORS: Record<ApcaRating, string> = {
+  Best: "#28c840",
+  Good: "#88B6D0",
+  OK: "#E9B872",
+  Min: "#D99962",
+  Fail: "#BA8082",
+};
+
+function renderSummary(stats: PaletteStats) {
+  const el = document.getElementById("contrast-summary");
+  if (!el) return;
+
+  const cards: Array<{ label: string; value: string; sub: string }> = [
+    { label: "Avg WCAG Ratio", value: `${stats.avgWcag.toFixed(1)}:1`, sub: `Best ${stats.maxWcag.wcagRatio.toFixed(1)}:1 · Worst ${stats.minWcag.wcagRatio.toFixed(1)}:1` },
+    { label: "Avg APCA |Lc|", value: Math.round(stats.avgApca).toString(), sub: `${stats.pairings.length} pairings analyzed` },
+    { label: "WCAG AA+ Pass", value: `${stats.wcagAAA + stats.wcagAA}/${stats.pairings.length}`, sub: `AAA: ${stats.wcagAAA} · AA: ${stats.wcagAA}` },
+    { label: "Needs Work", value: `${stats.wcagFail + stats.wcagAALarge}`, sub: `AA-large: ${stats.wcagAALarge} · Fail: ${stats.wcagFail}` },
+  ];
+
+  el.innerHTML = cards
+    .map(
+      (c) => `
+    <div class="bg-stilla-bg rounded-lg px-4 py-3">
+      <div class="text-xs uppercase tracking-wider text-stilla-comment mb-1">${c.label}</div>
+      <div class="text-2xl font-semibold text-stilla-fg">${c.value}</div>
+      <div class="text-xs text-stilla-muted mt-1">${c.sub}</div>
+    </div>`,
+    )
+    .join("");
+}
+
+function badgeHtml(text: string, color: string): string {
+  return `<span class="contrast-badge" style="--badge-color:${color}">${text}</span>`;
+}
+
+function renderTable(stats: PaletteStats) {
+  const tbody = document.getElementById("contrast-tbody");
+  if (!tbody) return;
+
+  tbody.innerHTML = stats.pairings
+    .map(
+      (p) => `
+    <tr class="border-t border-white/5">
+      <td class="px-3 py-2 whitespace-nowrap">
+        <span class="text-stilla-fg">${p.name}</span>
+      </td>
+      <td class="px-3 py-2">
+        <span class="contrast-preview" style="color:${p.fg};background:${p.bg}">Aa</span>
+      </td>
+      <td class="px-3 py-2 text-right font-mono">${p.wcagRatio.toFixed(2)}</td>
+      <td class="px-3 py-2 text-center">${badgeHtml(p.wcagGrade, WCAG_COLORS[p.wcagGrade])}</td>
+      <td class="px-3 py-2 text-right font-mono">${p.apca.toFixed(1)}</td>
+      <td class="px-3 py-2 text-center">${badgeHtml(p.apcaGrade, APCA_COLORS[p.apcaGrade])}</td>
+    </tr>`,
+    )
+    .join("");
+}
+
+function updateDashboard() {
+  const stats = analyzePalette(currentPalette);
+  renderSummary(stats);
+  renderTable(stats);
+}
+
 function applyTheme() {
   monaco.editor.defineTheme("stilla", buildMonacoTheme(currentPalette));
   monaco.editor.setTheme("stilla");
   updateChromeColors(currentPalette);
+  updateDashboard();
 }
 
 function init() {
@@ -252,6 +329,7 @@ function init() {
   });
 
   updateChromeColors(currentPalette);
+  updateDashboard();
 }
 
 init();
