@@ -1,118 +1,122 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <style>
-body {
-  margin: 0;
-  padding: 0 2em;
-  font-family: 'Source Sans Pro', sans-serif;
-}
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  align-items: left;
-  padding-bottom: 1.5em;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.indent {
-  margin-left: 1em;
-}
-
-.color {
-  height: 10em;
-  width: 10em;
-  margin: 1em 0;
-}
-
-.title {
-  height: 10em;
-  width: 8em;
-  margin: 1em 1.5em;
-}
-
-#color0 { background-color: #0D0D0D; }
-#color1 { background-color: #121414; }
-#color2 { background-color: #1A1C1C; }
-#color3 { background-color: #4C566A; }
-#color3_alt { background-color: #8C8C8C; }
-#color4 { background-color: #F2F2F2; }
-#color5 { background-color: #FAFAFA; }
-#color6 { background-color: #FAF5EF; }
-#color7 { background-color: #8FBCBB; }
-#color8 { background-color: #88B6D0; }
-#color9 { background-color: #ADB2BA; }
-#color10 { background-color: #5E81AC; }
-#color11 { background-color: #BA8082; }
-#color12 { background-color: #D99962; }
-#color13 { background-color: #E9B872; }
-#color14 { background-color: #A19C9A; }
-#color15 { background-color: #CD96B3; }
-</style>
+<html lang="en">
   <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
-    <title>stilla</title>
-    <meta charset="utf-8">
-    <meta property="og:title" content="stilla" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stilla</title>
+    <meta name="description" content="A quiet, introverted color palette. Designed to retain expression while staying out of your way." />
+    <meta name="author" content="jakeisnt" />
+    <meta property="og:title" content="Stilla" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://stilla.isnt.online" />
-    <meta property="og:image" content="https://avatars0.githubusercontent.com/u/29869612?s=400&u=32e0c272cbfcc32b8e9585f74ce57d197aa14fb0&v=4"/>
-    <meta name="description" content="A quiet, introverted color palette. Designed to retain expression while staying out of your way."/>
-    <meta name="keywords" content="stilla, palette, color, colorscheme, design"/>
-    <meta name="author" content="jakeisnt"/>
-    <meta name="robots" content="follow"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#fff"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <meta property="og:description" content="A quiet, introverted color palette. Designed to retain expression while staying out of your way." />
+    <meta name="theme-color" content="#121414" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
   </head>
-  <body>
-    <main>
-      <div class="row">
-        <div class="title">
+  <body class="bg-[#121414] text-[#F2F2F2] font-sans min-h-screen px-6 py-12 sm:px-12">
+    <header class="max-w-4xl mx-auto mb-12">
+      <h1 class="text-4xl font-semibold tracking-tight">Stilla</h1>
+      <p class="mt-2 text-lg text-[#ADB2BA]">A quiet, introverted color palette.</p>
+      <p class="mt-1 text-sm text-[#8C8C8C]">
+        By <a href="https://jake.isnt.online" class="underline underline-offset-2 hover:text-[#88B6D0] transition-colors">@jakeisnt</a>
+      </p>
+    </header>
+
+    <main class="max-w-4xl mx-auto space-y-10">
+      <section>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-[#8C8C8C] mb-4">Backgrounds</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
           <div>
-            <h1>Stilla</h1>
-            <p>A subtle color theme</p>
+            <div class="h-24 rounded-lg bg-[#0D0D0D] ring-1 ring-white/10"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#0D0D0D</p>
           </div>
-          By @<a href="https://jake.isnt.online">jakeisnt</a>
+          <div>
+            <div class="h-24 rounded-lg bg-[#121414] ring-1 ring-white/10"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#121414</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#1A1C1C] ring-1 ring-white/10"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#1A1C1C</p>
+          </div>
         </div>
-        <div class="indent"><div class="color" id="color0"></div> #0D0D0D</div>
-        <div class="indent"><div class="color" id="color1"></div> #121414</div>
-      </div>
-      <div class="row">
-        <div class="indent"><div class="color" id="color2"></div> #1A1C1C</div>
-        <div class="indent"><div class="color" id="color3"></div> #4C566A</div>
-        <div class="indent"><div class="color" id="color3_alt"></div> #8C8C8C</div>
-      </div>
-      <div class="row">
-        <div class="indent"><div class="color" id="color4"></div> #F2F2F2</div>
-        <div class="indent"><div class="color" id="color5"></div> #FAFAFA</div>
-        <div class="indent"><div class="color" id="color6"></div> #FAF5EF</div>
-      </div>
-      <div class="row">
-        <div class="indent"><div class="color" id="color7"></div> #8FBCBB</div>
-        <div class="indent"><div class="color" id="color8"></div> #88B6D0</div>
-        <div class="indent"><div class="color" id="color9"></div> #ADB2BA</div>
-      </div>
-      <div class="row">
-        <div class="indent"><div class="color" id="color10"></div> #5E81AC</div>
-        <div class="indent"><div class="color" id="color11"></div> #BA8082</div>
-        <div class="indent"><div class="color" id="color12"></div> #D99962</div>
-      </div>
-      <div class="row">
-        <div class="indent"><div class="color" id="color13"></div> #E9B872</div>
-        <div class="indent"><div class="color" id="color14"></div> #A19C9A</div>
-        <div class="indent"><div class="color" id="color15"></div> #CD96B3</div>
-      </div>
+      </section>
+
+      <section>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-[#8C8C8C] mb-4">Neutrals</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div>
+            <div class="h-24 rounded-lg bg-[#4C566A]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#4C566A</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#8C8C8C]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#8C8C8C</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#ADB2BA]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#ADB2BA</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-[#8C8C8C] mb-4">Lights</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div>
+            <div class="h-24 rounded-lg bg-[#F2F2F2]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#F2F2F2</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#FAFAFA]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#FAFAFA</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#FAF5EF]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#FAF5EF</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-[#8C8C8C] mb-4">Accents</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div>
+            <div class="h-24 rounded-lg bg-[#8FBCBB]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#8FBCBB</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#88B6D0]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#88B6D0</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#5E81AC]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#5E81AC</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#BA8082]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#BA8082</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#D99962]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#D99962</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#E9B872]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#E9B872</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#A19C9A]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#A19C9A</p>
+          </div>
+          <div>
+            <div class="h-24 rounded-lg bg-[#CD96B3]"></div>
+            <p class="mt-2 text-xs font-mono text-[#8C8C8C]">#CD96B3</p>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
