@@ -3,3 +3,11 @@
 @theme inline {
   --font-sans: "Source Sans Pro", sans-serif;
 }
+
+.swatch {
+  cursor: pointer;
+}
+
+.swatch:hover p {
+  color: #F2F2F2;
+}
