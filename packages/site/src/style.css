@@ -5,10 +5,91 @@
   --font-sans: "Source Sans Pro", sans-serif;
 }
 
-.swatch {
-  cursor: pointer;
+/* VS Code chrome */
+.vscode-frame {
+  --chrome-bg: #0D0D0D;
+  --chrome-bg-alt: #121414;
+  --chrome-surface: #1A1C1C;
+  --chrome-muted: #4C566A;
+  --chrome-comment: #8C8C8C;
+  --chrome-fg: #F2F2F2;
+  --chrome-cyan: #88B6D0;
 }
 
-.swatch:hover p {
-  color: #F2F2F2;
+.vscode-titlebar {
+  background: var(--chrome-bg);
+  color: var(--chrome-fg);
+}
+
+.vscode-tabbar {
+  background: var(--chrome-bg);
+  border-bottom: 1px solid var(--chrome-bg-alt);
+}
+
+.vscode-tab {
+  color: var(--chrome-fg);
+}
+
+.vscode-tab.active {
+  background: var(--chrome-bg-alt);
+  border-top-color: var(--chrome-cyan);
+}
+
+.vscode-statusbar {
+  background: var(--chrome-bg-alt);
+  color: var(--chrome-comment);
+}
+
+/* Color picker styles */
+.picker-group h3 {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-stilla-comment);
+  margin-bottom: 0.5rem;
+}
+
+.picker-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+}
+
+.picker-row input[type="color"] {
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid var(--color-stilla-surface);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+}
+
+.picker-row input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 1px;
+}
+
+.picker-row input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 0.125rem;
+}
+
+.picker-row label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.picker-row .color-name {
+  color: var(--color-stilla-fg);
+  min-width: 5rem;
+}
+
+.picker-row code {
+  color: var(--color-stilla-comment);
+  font-size: 0.6875rem;
 }
