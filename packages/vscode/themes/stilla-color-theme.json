@@ -23,7 +23,7 @@
     "charts.red": "#BA8082",
     "charts.blue": "#ADB2BA",
     "charts.yellow": "#E9B872",
-    "charts.orange": "#d99962",
+    "charts.orange": "#D99962",
     "charts.green": "#A19C9A",
     "charts.purple": "#CD96B3",
     "charts.foreground": "#F2F2F2",
@@ -149,8 +149,8 @@
     "inputValidation.errorBorder": "#BA8082",
     "inputValidation.infoBackground": "#ADB2BA",
     "inputValidation.infoBorder": "#ADB2BA",
-    "inputValidation.warningBackground": "#d99962",
-    "inputValidation.warningBorder": "#d99962",
+    "inputValidation.warningBackground": "#D99962",
+    "inputValidation.warningBorder": "#D99962",
     "keybindingLabel.background": "#4C566A",
     "keybindingLabel.border": "#4C566A",
     "keybindingLabel.bottomBorder": "#4C566A",
@@ -709,7 +709,7 @@
         "source.css keyword.control.at-rule.media punctuation.definition.keyword"
       ],
       "settings": {
-        "foreground": "#d99962"
+        "foreground": "#D99962"
       }
     },
     {
@@ -909,7 +909,7 @@
       "name": "[Java] Storage Type Annotation",
       "scope": "source.java storage.type.annotation",
       "settings": {
-        "foreground": "#d99962"
+        "foreground": "#D99962"
       }
     },
     {
@@ -934,7 +934,7 @@
         "source.js meta.decorator entity.name.function"
       ],
       "settings": {
-        "foreground": "#d99962"
+        "foreground": "#D99962"
       }
     },
     {
@@ -1023,7 +1023,7 @@
       "name": "[HTML] Constant Other Inline-Data",
       "scope": "text.html.basic constant.other.inline-data",
       "settings": {
-        "foreground": "#d99962",
+        "foreground": "#D99962",
         "fontStyle": "italic"
       }
     },
@@ -1200,7 +1200,7 @@
         "source.python meta.function.decorator support.type"
       ],
       "settings": {
-        "foreground": "#d99962"
+        "foreground": "#D99962"
       }
     },
     {
@@ -1264,7 +1264,7 @@
         "source.tsx meta.decorator entity.name.function"
       ],
       "settings": {
-        "foreground": "#d99962"
+        "foreground": "#D99962"
       }
     },
     {
@@ -1367,7 +1367,7 @@
         "text.xml string.unquoted.cdata punctuation.definition.string"
       ],
       "settings": {
-        "foreground": "#d99962",
+        "foreground": "#D99962",
         "fontStyle": "italic"
       }
     },

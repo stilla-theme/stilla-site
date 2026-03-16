@@ -5,6 +5,10 @@
     "": {
       "name": "stilla-themes",
     },
+    "packages/colors": {
+      "name": "stilla-colors",
+      "version": "0.0.1",
+    },
     "packages/site": {
       "name": "stilla-site",
       "devDependencies": {
@@ -16,6 +20,9 @@
     "packages/vscode": {
       "name": "stilla-vscode",
       "version": "0.0.1",
+      "dependencies": {
+        "stilla-colors": "workspace:*",
+      },
       "devDependencies": {
         "@biomejs/biome": "^2.0.0",
         "@vscode/vsce": "^3.2.0",
@@ -672,6 +679,8 @@
     "spdx-expression-parse": ["spdx-expression-parse@3.0.1", "", { "dependencies": { "spdx-exceptions": "^2.1.0", "spdx-license-ids": "^3.0.0" } }, "sha512-cbqHunsQWnJNE6KhVSMsMeH5H/L9EpymbzqTQ3uLwNCLZ1Q481oWaofqH7nO6V07xlXwY6PhQdQ2IedWx/ZK4Q=="],
 
     "spdx-license-ids": ["spdx-license-ids@3.0.23", "", {}, "sha512-CWLcCCH7VLu13TgOH+r8p1O/Znwhqv/dbb6lqWy67G+pT1kHmeD/+V36AVb/vq8QMIQwVShJ6Ssl5FPh0fuSdw=="],
+
+    "stilla-colors": ["stilla-colors@workspace:packages/colors"],
 
     "stilla-site": ["stilla-site@workspace:packages/site"],
 

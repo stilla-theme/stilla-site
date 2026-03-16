@@ -1,4 +1,4 @@
-bg ODODOD
+bg 0D0D0D
 bg-alt 121414
 base0 121414
 base1 BA8082

@@ -1,5 +1,9 @@
 {
   "name": "stilla-themes",
   "private": true,
-  "workspaces": ["packages/*"]
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "generate": "bun run --cwd packages/colors build",
+    "build": "bun run generate && bun run --cwd packages/vscode build"
+  }
 }
