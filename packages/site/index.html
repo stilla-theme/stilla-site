@@ -73,6 +73,44 @@
         </div>
       </div>
 
+      <!-- Contrast dashboard -->
+      <div class="max-w-7xl mx-auto mt-16 pt-12 border-t border-white/5">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-stilla-comment mb-2">Contrast Analysis</h2>
+        <p class="text-sm text-stilla-steel mb-8">
+          Measured against
+          <a href="https://www.w3.org/TR/WCAG21/#contrast-minimum" class="underline underline-offset-2 hover:text-stilla-cyan transition-colors">WCAG 2.1</a>
+          contrast ratio and the
+          <a href="https://readtech.org/ARC/" class="underline underline-offset-2 hover:text-stilla-cyan transition-colors">APCA</a>
+          (WCAG 3.0 draft) lightness-contrast algorithm. Updates live as you adjust colors above.
+        </p>
+
+        <!-- Summary cards -->
+        <div id="contrast-summary" class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8"></div>
+
+        <!-- Pairing table -->
+        <div class="overflow-x-auto rounded-lg border border-white/5">
+          <table class="contrast-table w-full text-sm">
+            <thead>
+              <tr class="text-left text-stilla-comment text-xs uppercase tracking-wider">
+                <th class="px-3 py-2">Pairing</th>
+                <th class="px-3 py-2">Preview</th>
+                <th class="px-3 py-2 text-right">WCAG Ratio</th>
+                <th class="px-3 py-2 text-center">WCAG Level</th>
+                <th class="px-3 py-2 text-right">APCA Lc</th>
+                <th class="px-3 py-2 text-center">APCA Rating</th>
+              </tr>
+            </thead>
+            <tbody id="contrast-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- Legend -->
+        <div class="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-xs text-stilla-comment">
+          <span><strong class="text-stilla-fg">WCAG 2.1</strong> — AAA ≥ 7:1 · AA ≥ 4.5:1 · AA-large ≥ 3:1</span>
+          <span><strong class="text-stilla-fg">APCA</strong> — Best ≥ 90 · Good ≥ 75 · OK ≥ 60 · Min ≥ 30</span>
+        </div>
+      </div>
+
       <!-- Install instructions -->
       <div class="max-w-7xl mx-auto mt-16 pt-12 border-t border-white/5">
         <h2 class="text-sm font-semibold uppercase tracking-widest text-stilla-comment mb-8">Install</h2>
