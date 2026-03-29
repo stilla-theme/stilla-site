@@ -103,11 +103,13 @@ export function apcaLc(textHex: string, bgHex: string): number {
   if (bgYc > txtYc) {
     // Dark text on light background
     SAPC = (bgYc ** normBG - txtYc ** normTXT) * scaleBoW;
-    return Math.abs(SAPC) < loClip ? 0 : SAPC > 0 ? SAPC - loBoWoffset : 0;
+    const lc = Math.abs(SAPC) < loClip ? 0 : SAPC > 0 ? SAPC - loBoWoffset : 0;
+    return lc * 100;
   }
   // Light text on dark background
   SAPC = (bgYc ** revBG - txtYc ** revTXT) * scaleWoB;
-  return Math.abs(SAPC) < loClip ? 0 : SAPC < 0 ? SAPC + loWoBoffset : 0;
+  const lc = Math.abs(SAPC) < loClip ? 0 : SAPC < 0 ? SAPC + loWoBoffset : 0;
+  return lc * 100;
 }
 
 export type ApcaRating = "Best" | "Good" | "OK" | "Min" | "Fail";

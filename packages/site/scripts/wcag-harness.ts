@@ -1,7 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { palette as sourcePalette, type PaletteKey } from "stilla-colors";
-import { analyzePalette, relativeLuminance, wcagContrast } from "../src/contrast";
+import { analyzePalette, apcaLc, relativeLuminance, wcagContrast } from "../src/contrast";
 
 type ThemePalette = Record<PaletteKey, string>;
 
@@ -19,6 +19,7 @@ type Hsl = {
 
 type HarnessOptions = {
   minRatio: number;
+  minApca: number;
   outFile: string;
 };
 
@@ -49,6 +50,7 @@ const PALETTE_KEY_SET = new Set<string>(PALETTE_KEYS);
 
 const DEFAULT_OPTIONS: HarnessOptions = {
   minRatio: 4.5,
+  minApca: 30,
   outFile: "./.generated/wcag-adjusted-palette.json",
 };
 
@@ -98,6 +100,20 @@ function parseArgs(argv: string[]): HarnessOptions {
         throw new Error("--out requires a file path");
       }
       next.outFile = raw;
+      i += 1;
+      continue;
+    }
+
+    if (arg === "--min-apca") {
+      const raw = argv[i + 1];
+      if (!raw) {
+        throw new Error("--min-apca requires a numeric value");
+      }
+      const value = Number(raw);
+      if (!Number.isFinite(value) || value < 0 || value > 110) {
+        throw new Error("--min-apca must be between 0 and 110");
+      }
+      next.minApca = value;
       i += 1;
       continue;
     }
@@ -222,10 +238,20 @@ function satisfiesAll(candidate: string, backgrounds: string[], minRatio: number
   return true;
 }
 
+function satisfiesAllApca(candidate: string, backgrounds: string[], minApca: number): boolean {
+  for (const bg of backgrounds) {
+    if (Math.abs(apcaLc(candidate, bg)) < minApca) {
+      return false;
+    }
+  }
+  return true;
+}
+
 function searchLightness(
   hsl: Hsl,
   backgrounds: string[],
   minRatio: number,
+  minApca: number,
   direction: "lighter" | "darker",
 ): string | null {
   let lo = direction === "lighter" ? hsl.l : 0;
@@ -236,7 +262,7 @@ function searchLightness(
     const mid = (lo + hi) / 2;
     const candidateHex = rgbToHex(hslToRgb({ ...hsl, l: mid }));
 
-    if (satisfiesAll(candidateHex, backgrounds, minRatio)) {
+    if (satisfiesAll(candidateHex, backgrounds, minRatio) && satisfiesAllApca(candidateHex, backgrounds, minApca)) {
       best = candidateHex;
       if (direction === "lighter") {
         hi = mid;
@@ -253,8 +279,8 @@ function searchLightness(
   return best;
 }
 
-function adjustForegroundForBackgrounds(hex: string, backgrounds: string[], minRatio: number): string {
-  if (satisfiesAll(hex, backgrounds, minRatio)) {
+function adjustForegroundForBackgrounds(hex: string, backgrounds: string[], minRatio: number, minApca: number): string {
+  if (satisfiesAll(hex, backgrounds, minRatio) && satisfiesAllApca(hex, backgrounds, minApca)) {
     return hex;
   }
 
@@ -262,12 +288,12 @@ function adjustForegroundForBackgrounds(hex: string, backgrounds: string[], minR
   const preferred = luminanceDirection(hex, backgrounds);
   const fallback = preferred === "lighter" ? "darker" : "lighter";
 
-  const firstTry = searchLightness(hsl, backgrounds, minRatio, preferred);
+  const firstTry = searchLightness(hsl, backgrounds, minRatio, minApca, preferred);
   if (firstTry) {
     return firstTry;
   }
 
-  const secondTry = searchLightness(hsl, backgrounds, minRatio, fallback);
+  const secondTry = searchLightness(hsl, backgrounds, minRatio, minApca, fallback);
   if (secondTry) {
     return secondTry;
   }
@@ -275,12 +301,14 @@ function adjustForegroundForBackgrounds(hex: string, backgrounds: string[], minR
   return hex;
 }
 
-function optimizePalette(input: ThemePalette, minRatio: number): ThemePalette {
+function optimizePalette(input: ThemePalette, minRatio: number, minApca: number): ThemePalette {
   const output: ThemePalette = { ...input };
 
   for (let pass = 0; pass < 8; pass += 1) {
     const stats = analyzePalette(output);
-    const failing = stats.pairings.filter((pairing) => pairing.wcagRatio < minRatio);
+    const failing = stats.pairings.filter(
+      (pairing) => pairing.wcagRatio < minRatio || Math.abs(pairing.apca) < minApca,
+    );
 
     if (failing.length === 0) {
       return output;
@@ -299,7 +327,7 @@ function optimizePalette(input: ThemePalette, minRatio: number): ThemePalette {
 
     for (const [fgKey, backgroundsSet] of backgroundsByForeground.entries()) {
       const backgrounds = [...backgroundsSet];
-      output[fgKey] = adjustForegroundForBackgrounds(output[fgKey], backgrounds, minRatio);
+      output[fgKey] = adjustForegroundForBackgrounds(output[fgKey], backgrounds, minRatio, minApca);
     }
   }
 
@@ -316,7 +344,7 @@ function round(value: number): number {
 
 function runHarness(options: HarnessOptions) {
   const before: ThemePalette = { ...sourcePalette };
-  const after = optimizePalette(before, options.minRatio);
+  const after = optimizePalette(before, options.minRatio, options.minApca);
   const colorsTxt = readColorsTxt();
 
   const beforeStats = analyzePalette(before);
@@ -325,17 +353,22 @@ function runHarness(options: HarnessOptions) {
 
   const payload = {
     minRatio: options.minRatio,
+    minApca: options.minApca,
     colorsTxt,
     summary: {
       before: {
         fail: beforeStats.wcagFail,
         aaLarge: beforeStats.wcagAALarge,
         aaOrBetter: beforeStats.wcagAAA + beforeStats.wcagAA,
+        apcaFail: beforeStats.pairings.filter((pairing) => pairing.apcaGrade === "Fail").length,
+        apcaMinOrBetter: beforeStats.pairings.filter((pairing) => Math.abs(pairing.apca) >= options.minApca).length,
       },
       after: {
         fail: afterStats.wcagFail,
         aaLarge: afterStats.wcagAALarge,
         aaOrBetter: afterStats.wcagAAA + afterStats.wcagAA,
+        apcaFail: afterStats.pairings.filter((pairing) => pairing.apcaGrade === "Fail").length,
+        apcaMinOrBetter: afterStats.pairings.filter((pairing) => Math.abs(pairing.apca) >= options.minApca).length,
       },
     },
     changed,
@@ -356,6 +389,8 @@ function runHarness(options: HarnessOptions) {
       bgKey: pairing.bgKey,
       ratio: round(pairing.wcagRatio),
       level: pairing.wcagGrade,
+      apca: round(pairing.apca),
+      apcaLevel: pairing.apcaGrade,
     })),
   };
 
@@ -363,9 +398,13 @@ function runHarness(options: HarnessOptions) {
   mkdirSync(resolve(outputPath, ".."), { recursive: true });
   writeFileSync(outputPath, `${JSON.stringify(payload, null, 2)}\n`);
 
-  console.log(`WCAG harness complete (target >= ${options.minRatio}:1)`);
-  console.log(`Before: Fail ${beforeStats.wcagFail}, AA-large ${beforeStats.wcagAALarge}`);
-  console.log(`After:  Fail ${afterStats.wcagFail}, AA-large ${afterStats.wcagAALarge}`);
+  console.log(`Contrast harness complete (WCAG >= ${options.minRatio}:1, APCA |Lc| >= ${options.minApca})`);
+  console.log(
+    `Before: WCAG Fail ${beforeStats.wcagFail}, AA-large ${beforeStats.wcagAALarge}, APCA<${options.minApca} ${beforeStats.pairings.filter((pairing) => Math.abs(pairing.apca) < options.minApca).length}`,
+  );
+  console.log(
+    `After:  WCAG Fail ${afterStats.wcagFail}, AA-large ${afterStats.wcagAALarge}, APCA<${options.minApca} ${afterStats.pairings.filter((pairing) => Math.abs(pairing.apca) < options.minApca).length}`,
+  );
 
   if (changed.length === 0) {
     console.log("No palette adjustments were required.");
