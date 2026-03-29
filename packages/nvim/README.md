@@ -8,7 +8,7 @@ Neovim color theme for Stilla.
 
 ```lua
 -- lazy.nvim (pointing at monorepo subdirectory)
-{ "stilla-theme/stilla-site", config = function() require("stilla").set() end }
+{ "ulnd/stilla", subdir = "packages/nvim", config = function() require("stilla").set() end }
 ```
 
 ## Configuration

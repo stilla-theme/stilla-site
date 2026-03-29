@@ -136,9 +136,10 @@
             <h3 class="text-base font-semibold text-stilla-cyan mb-3">Neovim</h3>
             <p class="text-sm text-stilla-steel mb-2">Add to <strong class="text-stilla-fg">lazy.nvim</strong>:</p>
             <pre class="bg-stilla-bg rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm font-mono text-stilla-steel overflow-x-auto"><code>{
-  "stilla-theme/stilla-site",
+  "ulnd/stilla",
+  subdir = "packages/nvim",
   config = function()
-    vim.cmd.colorscheme("stilla")
+    require("stilla").set()
   end,
 }</code></pre>
           </div>
