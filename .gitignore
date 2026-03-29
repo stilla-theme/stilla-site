@@ -3,3 +3,4 @@ dist
 .cursor
 *.vsix
 *.tar.gz
+.playwright-mcp/
