@@ -4,3 +4,4 @@ dist
 *.vsix
 *.tar.gz
 .playwright-mcp/
+packages/site/.generated/
