@@ -17,13 +17,19 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body class="bg-stilla-bg-alt text-stilla-fg font-sans min-h-screen">
-    <header class="px-2 py-3 sm:px-12">
-      <div class="max-w-7xl mx-auto">
-        <h1 class="text-3xl font-semibold tracking-tight">Stilla</h1>
-        <p class="mt-1 text-stilla-steel">A quiet, introverted color palette.</p>
-        <p class="mt-1 text-sm text-stilla-comment">
-          By <a href="https://jake.isnt.online" class="underline underline-offset-2 hover:text-stilla-cyan transition-colors">@jakeisnt</a>
-        </p>
+    <header class="px-2 py-5 sm:px-12">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-8">
+        <div>
+          <h1 class="text-3xl font-semibold tracking-tight">Stilla</h1>
+          <p class="mt-1 text-stilla-steel">A quiet, introverted color palette.</p>
+          <p class="mt-1 text-sm text-stilla-comment">
+            By <a href="https://jake.isnt.online" class="underline underline-offset-2 hover:text-stilla-cyan transition-colors">@jakeisnt</a>
+          </p>
+        </div>
+        <div class="hidden sm:block rounded-2xl overflow-hidden shrink-0 border border-white/5 shadow-2xl"
+             style="width:300px;height:400px">
+          <canvas id="code-anim" class="w-full h-full"></canvas>
+        </div>
       </div>
     </header>
 
