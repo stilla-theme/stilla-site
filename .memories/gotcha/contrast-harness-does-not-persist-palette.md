@@ -1,0 +1,1 @@
+The site contrast harness (`packages/site/scripts/wcag-harness.ts`) reports suggested palette adjustments and writes `.generated/wcag-adjusted-palette.json`, but it does not mutate source tokens. Persist fixes by editing `packages/colors/src/palette.ts` (e.g. `muted`), then run `bun run generate` to propagate updates into nvim/emacs/site generated files.

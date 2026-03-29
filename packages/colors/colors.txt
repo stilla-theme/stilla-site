@@ -8,10 +8,10 @@ base4 ADB2BA
 base5 CD96B3
 base6 88B6D0
 base7 FAFAFA
-base8 4C566A
+base8 77849D
 fg F2F2F2
 fg-alt BFC7D5
-grey 4C566A
+grey 77849D
 red BA8082
 orange D99962
 green A19C9A

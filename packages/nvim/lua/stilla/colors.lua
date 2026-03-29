@@ -5,7 +5,7 @@ local stilla = (vim.o.background == "dark")
 			stilla0_gui = "#0D0D0D", -- background
 			stilla1_gui = "#121414", -- normal black
 			stilla2_gui = "#1A1C1C", -- surface
-			stilla3_gui = "#4C566A", -- muted
+			stilla3_gui = "#77849D", -- muted
 			stilla3_gui_bright = "#8C8C8C", -- comments
 			stilla4_gui = "#F2F2F2", -- foreground
 			stilla5_gui = "#FAFAFA", -- white

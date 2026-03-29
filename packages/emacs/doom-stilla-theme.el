@@ -45,11 +45,11 @@ Can be an integer to determine the exact padding."
    (base5      '("#CD96B3" "#585858" "brightblack"))
    (base6      '("#88B6D0" "#626262" "brightblack"))
    (base7      '("#FAFAFA" "#767676" "brightblack"))
-   (base8      '("#4C566A" "#a8a8a8" "white"))
+   (base8      '("#77849D" "#a8a8a8" "white"))
    (fg         '("#F2F2F2" "#e4e4e4" "brightwhite"))
    (fg-alt     '("#BFC7D5" "#bcbcbc" "white"))
 
-   (grey '("#4C566A" nil nil))
+   (grey '("#77849D" nil nil))
 
    (red         '("#BA8082" "#ff0000" "red"))
    (orange      '("#D99962" "#ff5f00" "brightred"))

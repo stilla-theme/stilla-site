@@ -3,7 +3,7 @@ export const palette = {
   bg: "#0D0D0D",
   bgAlt: "#121414",
   surface: "#1A1C1C",
-  muted: "#4C566A",
+  muted: "#77849D",
   comment: "#8C8C8C",
   fg: "#F2F2F2",
   white: "#FAFAFA",
