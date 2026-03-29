@@ -49,8 +49,8 @@ const PALETTE_KEYS: PaletteKey[] = [
 const PALETTE_KEY_SET = new Set<string>(PALETTE_KEYS);
 
 const DEFAULT_OPTIONS: HarnessOptions = {
-  minRatio: 4.5,
-  minApca: 30,
+  minRatio: 7,
+  minApca: 90,
   outFile: "./.generated/wcag-adjusted-palette.json",
 };
 

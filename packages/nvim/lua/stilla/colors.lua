@@ -5,20 +5,20 @@ local stilla = (vim.o.background == "dark")
 			stilla0_gui = "#0D0D0D", -- background
 			stilla1_gui = "#121414", -- normal black
 			stilla2_gui = "#1A1C1C", -- surface
-			stilla3_gui = "#77849D", -- muted
-			stilla3_gui_bright = "#8C8C8C", -- comments
+			stilla3_gui = "#E4E6EB", -- muted
+			stilla3_gui_bright = "#E5E5E5", -- comments
 			stilla4_gui = "#F2F2F2", -- foreground
 			stilla5_gui = "#FAFAFA", -- white
 			stilla6_gui = "#FAF5EF", -- warm white
-			stilla7_gui = "#8FBCBB", -- teal
-			stilla8_gui = "#88B6D0", -- cyan
-			stilla9_gui = "#ADB2BA", -- steel
-			stilla10_gui = "#5E81AC", -- navy
-			stilla11_gui = "#BA8082", -- red
-			stilla12_gui = "#D99962", -- orange
-			stilla13_gui = "#E9B872", -- yellow
-			stilla14_gui = "#A19C9A", -- sage
-			stilla15_gui = "#CD96B3", -- magenta
+			stilla7_gui = "#D8E7E7", -- teal
+			stilla8_gui = "#D7E7EF", -- cyan
+			stilla9_gui = "#E3E5E7", -- steel
+			stilla10_gui = "#DDE5EE", -- navy
+			stilla11_gui = "#EEE1E1", -- red
+			stilla12_gui = "#F4E1D0", -- orange
+			stilla13_gui = "#F6E1C4", -- yellow
+			stilla14_gui = "#E5E4E3", -- sage
+			stilla15_gui = "#F0E0E8", -- magenta
 			none = "NONE",
 		}
 	or { -- note: light theme is still identical to nord
