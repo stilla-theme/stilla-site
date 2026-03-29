@@ -1,38 +1,55 @@
 local util = {}
 local stilla = require("stilla.theme")
 
--- Go trough the table and highlight the group with the color values
-util.highlight = function(group, color)
-	local style = color.style and "gui=" .. color.style or "gui=NONE"
-	local fg = color.fg and "guifg=" .. color.fg or "guifg=NONE"
-	local bg = color.bg and "guibg=" .. color.bg or "guibg=NONE"
-	local sp = color.sp and "guisp=" .. color.sp or ""
-
-	local hl = "highlight " .. group .. " " .. style .. " " .. fg .. " " .. bg .. " " .. sp
-
-	vim.cmd(hl)
-	if color.link then
-		vim.cmd("highlight! link " .. group .. " " .. color.link)
+-- Parse a legacy comma-separated style string into nvim_set_hl boolean keys.
+local function parse_style(style)
+	local opts = {}
+	if not style or style == "NONE" then return opts end
+	for part in style:gmatch("[^,]+") do
+		opts[part] = true
 	end
+	return opts
 end
 
--- Only define stilla if it's the active colorscheme
+-- Highlight a group using the native nvim API (no vim.cmd string building).
+util.highlight = function(group, color)
+	if color.link then
+		vim.api.nvim_set_hl(0, group, { link = color.link })
+		return
+	end
+
+	local opts = parse_style(color.style)
+	if color.fg and color.fg ~= "NONE" then opts.fg = color.fg end
+	if color.bg and color.bg ~= "NONE" then opts.bg = color.bg end
+	if color.sp then opts.sp = color.sp end
+
+	vim.api.nvim_set_hl(0, group, opts)
+end
+
+-- Clear stilla autocmds when another colorscheme takes over.
 function util.onColorScheme()
 	if vim.g.colors_name ~= "stilla" then
-		vim.cmd([[autocmd! stilla]])
-		vim.cmd([[augroup! stilla]])
+		pcall(vim.api.nvim_del_augroup_by_name, "stilla")
 	end
 end
 
--- Change the background for the terminal, packer and qf windows
+-- Apply contrast winhighlight to terminal/packer/qf windows.
 util.contrast = function()
-	vim.cmd([[augroup stilla]])
-	vim.cmd([[  autocmd!]])
-	vim.cmd([[  autocmd ColorScheme * lua require("stilla.util").onColorScheme()]])
-	vim.cmd([[  autocmd TermOpen * setlocal winhighlight=Normal:NormalFloat,SignColumn:NormalFloat]])
-	vim.cmd([[  autocmd FileType packer setlocal winhighlight=Normal:NormalFloat,SignColumn:NormalFloat]])
-	vim.cmd([[  autocmd FileType qf setlocal winhighlight=Normal:NormalFloat,SignColumn:NormalFloat]])
-	vim.cmd([[augroup end]])
+	local group = vim.api.nvim_create_augroup("stilla", { clear = true })
+	vim.api.nvim_create_autocmd("ColorScheme", {
+		group = group,
+		callback = function() require("stilla.util").onColorScheme() end,
+	})
+	local float_hl = "Normal:NormalFloat,SignColumn:NormalFloat"
+	vim.api.nvim_create_autocmd("TermOpen", {
+		group = group,
+		command = "setlocal winhighlight=" .. float_hl,
+	})
+	vim.api.nvim_create_autocmd("FileType", {
+		group = group,
+		pattern = { "packer", "qf" },
+		command = "setlocal winhighlight=" .. float_hl,
+	})
 end
 
 -- Load the theme
