@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body class="bg-stilla-bg-alt text-stilla-fg font-sans min-h-screen">
-    <header class="px-2 py-8 sm:px-12">
+    <header class="px-2 py-3 sm:px-12">
       <div class="max-w-7xl mx-auto">
         <h1 class="text-3xl font-semibold tracking-tight">Stilla</h1>
         <p class="mt-1 text-stilla-steel">A quiet, introverted color palette.</p>
@@ -27,12 +27,41 @@
       </div>
     </header>
 
-    <main class="px-2 sm:px-12 pb-12">
-      <div class="max-w-7xl mx-auto flex flex-row gap-4 sm:gap-6">
+    <main class="px-2 sm:px-12 pb-5">
+
+      <!-- Install instructions -->
+      <div class="max-w-7xl mx-auto mb-6 pb-6 border-b border-white/5">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-stilla-comment mb-3">Install</h2>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <div class="sm:flex-1 min-w-0">
+            <h3 class="text-base font-semibold text-stilla-cyan mb-1.5">VS Code</h3>
+            <p class="text-sm text-stilla-steel mb-1.5">Search <strong class="text-stilla-fg">Stilla</strong> in Extensions, or:</p>
+            <pre class="bg-stilla-bg rounded-lg px-3 sm:px-4 py-2 text-xs sm:text-sm font-mono text-stilla-steel overflow-x-auto"><code>code --install-extension jakeisnt.stilla</code></pre>
+          </div>
+          <div class="sm:flex-1 min-w-0">
+            <h3 class="text-base font-semibold text-stilla-cyan mb-1.5">Neovim</h3>
+            <p class="text-sm text-stilla-steel mb-1.5">Add to <strong class="text-stilla-fg">lazy.nvim</strong>:</p>
+            <pre class="bg-stilla-bg rounded-lg px-3 sm:px-4 py-2 text-xs sm:text-sm font-mono text-stilla-steel overflow-x-auto"><code>{
+  "ulnd/stilla",
+  subdir = "packages/nvim",
+  config = function()
+    require("stilla").set()
+  end,
+}</code></pre>
+          </div>
+          <div class="sm:flex-1 min-w-0">
+            <h3 class="text-base font-semibold text-stilla-cyan mb-1.5">Doom Emacs</h3>
+            <p class="text-sm text-stilla-steel mb-1.5">Download <a href="https://github.com/ulnd/stilla/blob/main/packages/emacs/doom-stilla-theme.el" class="underline underline-offset-2 hover:text-stilla-cyan transition-colors text-stilla-fg">doom-stilla-theme.el</a>, then:</p>
+            <pre class="bg-stilla-bg rounded-lg px-3 sm:px-4 py-2 text-xs sm:text-sm font-mono text-stilla-steel overflow-x-auto"><code>(setq doom-theme 'doom-stilla)</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto flex flex-row gap-3 sm:gap-5">
         <!-- Color pickers -->
         <aside class="w-48 sm:w-64 shrink-0">
-          <div id="color-pickers" class="space-y-6"></div>
-          <div class="mt-6 flex gap-3">
+          <div id="color-pickers" class="space-y-4"></div>
+          <div class="mt-4 flex gap-3">
             <button id="reset-btn" class="px-3 py-1.5 text-sm rounded bg-stilla-surface text-stilla-fg hover:bg-stilla-muted transition-colors">Reset</button>
             <button id="export-btn" class="px-3 py-1.5 text-sm rounded bg-stilla-surface text-stilla-fg hover:bg-stilla-muted transition-colors">Export Palette</button>
           </div>
@@ -74,9 +103,9 @@
       </div>
 
       <!-- Contrast dashboard -->
-      <div class="max-w-7xl mx-auto mt-16 pt-12 border-t border-white/5">
+      <div class="max-w-7xl mx-auto mt-6 pt-6 border-t border-white/5">
         <h2 class="text-sm font-semibold uppercase tracking-widest text-stilla-comment mb-2">Contrast Analysis</h2>
-        <div class="text-sm text-stilla-steel mb-8 space-y-3 max-w-3xl">
+        <div class="text-sm text-stilla-steel mb-4 space-y-1.5 max-w-3xl">
           <p>
             How readable is text when placed on a given background? Two methods measure this — they agree most of the time, but each catches different edge cases.
           </p>
@@ -97,7 +126,7 @@
         </div>
 
         <!-- Summary cards -->
-        <div id="contrast-summary" class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8"></div>
+        <div id="contrast-summary" class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4"></div>
 
         <!-- Pairing table -->
         <div class="overflow-x-auto rounded-lg border border-white/5">
@@ -117,42 +146,14 @@
         </div>
 
         <!-- Legend -->
-        <div class="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-xs text-stilla-comment">
+        <div class="mt-2 flex flex-wrap gap-x-8 gap-y-1.5 text-xs text-stilla-comment">
           <span><strong class="text-stilla-fg">WCAG 2.1 ratio</strong> — <span title="Strictest; exceeds legal requirements">AAA ≥ 7:1</span> · <span title="Standard legal requirement for normal text">AA ≥ 4.5:1</span> · <span title="Minimum for large or bold text">AA-large ≥ 3:1</span></span>
           <span><strong class="text-stilla-fg">APCA Lc score</strong> — <span title="Ideal for small body text">Best ≥ 90</span> · <span title="Fine for normal body text">Good ≥ 75</span> · <span title="Works for large or bold text">OK ≥ 60</span> · <span title="Placeholder or non-content only">Min ≥ 30</span></span>
         </div>
       </div>
-
-      <!-- Install instructions -->
-      <div class="max-w-7xl mx-auto mt-16 pt-12 border-t border-white/5">
-        <h2 class="text-sm font-semibold uppercase tracking-widest text-stilla-comment mb-8">Install</h2>
-        <div class="flex flex-col sm:flex-row gap-8">
-          <div class="sm:flex-1 min-w-0">
-            <h3 class="text-base font-semibold text-stilla-cyan mb-3">VS Code</h3>
-            <p class="text-sm text-stilla-steel mb-2">Search <strong class="text-stilla-fg">Stilla</strong> in Extensions, or:</p>
-            <pre class="bg-stilla-bg rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm font-mono text-stilla-steel overflow-x-auto"><code>code --install-extension jakeisnt.stilla</code></pre>
-          </div>
-          <div class="sm:flex-1 min-w-0">
-            <h3 class="text-base font-semibold text-stilla-cyan mb-3">Neovim</h3>
-            <p class="text-sm text-stilla-steel mb-2">Add to <strong class="text-stilla-fg">lazy.nvim</strong>:</p>
-            <pre class="bg-stilla-bg rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm font-mono text-stilla-steel overflow-x-auto"><code>{
-  "ulnd/stilla",
-  subdir = "packages/nvim",
-  config = function()
-    require("stilla").set()
-  end,
-}</code></pre>
-          </div>
-          <div class="sm:flex-1 min-w-0">
-            <h3 class="text-base font-semibold text-stilla-cyan mb-3">Doom Emacs</h3>
-            <p class="text-sm text-stilla-steel mb-2">Download <a href="https://github.com/ulnd/stilla/blob/main/packages/emacs/doom-stilla-theme.el" class="underline underline-offset-2 hover:text-stilla-cyan transition-colors text-stilla-fg">doom-stilla-theme.el</a>, then:</p>
-            <pre class="bg-stilla-bg rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm font-mono text-stilla-steel overflow-x-auto"><code>(setq doom-theme 'doom-stilla)</code></pre>
-          </div>
-        </div>
-      </div>
     </main>
 
-    <footer class="px-2 sm:px-12 py-8 text-center text-sm text-stilla-comment">
+    <footer class="px-2 sm:px-12 py-3 text-center text-sm text-stilla-comment">
       <a href="https://uln.industries" class="underline underline-offset-2 hover:text-stilla-cyan transition-colors">uln.industries</a>
     </footer>
 
