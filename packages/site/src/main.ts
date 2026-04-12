@@ -1,4 +1,5 @@
 import * as monaco from "monaco-editor";
+import { initCodeAnimation } from "./code-animation";
 import editorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
 import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker";
 import { palette as defaultPalette, type PaletteKey } from "stilla-colors";
@@ -330,6 +331,9 @@ function init() {
 
   updateChromeColors(currentPalette);
   updateDashboard();
+
+  const animCanvas = document.getElementById("code-anim") as HTMLCanvasElement | null;
+  if (animCanvas) initCodeAnimation(animCanvas);
 }
 
 init();
